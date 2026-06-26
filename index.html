@@ -1,90 +1,683 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Beyond Trees</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --ink: #1f2a24;
-      --moss: #3f6b4f;
-      --paper: #f5f3ec;
-      --accent: #6b8e5a;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; }
-    body {
-      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-      background: radial-gradient(120% 120% at 50% 0%, #fbfaf4 0%, #eef0e6 55%, #e3e8da 100%);
-      color: var(--ink);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 2rem;
-      text-align: center;
-    }
-    .card { max-width: 640px; }
-    .eyebrow {
-      font-size: 0.8rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.4rem;
-    }
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: clamp(2.6rem, 8vw, 4.4rem);
-      line-height: 1.05;
-      margin-bottom: 1.1rem;
-    }
-    h1 em { font-style: italic; color: var(--accent); }
-    .tagline {
-      font-size: clamp(1.05rem, 3.5vw, 1.35rem);
-      color: #4a564d;
-      margin-bottom: 2rem;
-    }
-    .placeholder {
-      font-size: 1rem;
-      color: #7a8576;
-      font-style: italic;
-    }
-    .meta {
-      margin-top: 2.6rem;
-      font-size: 0.85rem;
-      letter-spacing: 0.04em;
-      color: #8a9384;
-      line-height: 1.7;
-    }
-    .pulse {
-      display: inline-block;
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      margin-right: 0.5rem;
-      animation: pulse 2.4s ease-in-out infinite;
-      vertical-align: middle;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 0.35; transform: scale(0.85); }
-      50% { opacity: 1; transform: scale(1.15); }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beyond Trees — a growth-form research community</title>
+<meta name="description" content="Beyond Trees is a research community advancing a growth-form perspective on tropical forests — lianas, palms and rattans, bamboos, and epiphytes — across evolutionary, functional, and socio-ecological lines.">
+<link rel="icon" href="arts/website-icon-ink.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f6f3ec;
+  --paper:#fbfaf5;
+  --ink:#23301f;
+  --ink-soft:#4b5742;
+  --leaf:#3f6b3a;
+  --leaf-bright:#5a8a4a;
+  --earth:#b5623f;
+  --gold:#bb9534;
+  --navy:#16365c;
+  --halo:0 1px 2px rgba(251,250,245,.9),0 0 6px rgba(251,250,245,.7);
+  --line:#d8d2c4;
+  --shadow:0 8px 30px rgba(35,48,31,.10);
+  --shadow-lg:0 20px 60px rgba(35,48,31,.18);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Inter",system-ui,sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+a{color:inherit}
+.serif{font-family:"Fraunces",Georgia,serif}
+
+/* ---------- Top nav ---------- */
+nav.top{
+  position:sticky;top:0;z-index:50;
+  background:rgba(246,243,236,.86);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+nav.top .wrap{display:flex;align-items:center;gap:18px;height:62px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:-.01em}
+.brand img{width:34px;height:34px;object-fit:contain}
+.brand .nm{font-family:"Fraunces",serif;font-size:18px}
+nav.top .links{margin-left:auto;display:flex;gap:22px;align-items:center;font-size:13.5px}
+nav.top .links a{color:var(--ink-soft);text-decoration:none;font-weight:500;transition:color .2s}
+nav.top .links a:hover{color:var(--leaf)}
+nav.top .links a.ext{color:var(--leaf);font-weight:600}
+@media(max-width:760px){nav.top .links a:not(.ext){display:none}}
+
+/* ---------- Hero ---------- */
+header.hero{padding:54px 0 30px;text-align:center;border-bottom:1px solid var(--line)}
+header.hero img.logo{width:clamp(200px,30vw,310px);height:auto;margin:0 auto 6px;display:block}
+.eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--leaf);font-weight:600}
+h1.title{
+  font-family:"Fraunces",serif;font-weight:600;
+  font-size:clamp(40px,8vw,78px);line-height:1;letter-spacing:-.02em;margin:12px 0 14px;
+}
+h1.title em{font-style:italic;color:var(--leaf)}
+.tagline{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(16px,2.4vw,22px);color:var(--ink-soft);max-width:60ch;margin:0 auto}
+.hero-cta{margin-top:22px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.cta{
+  font:inherit;font-size:13px;font-weight:600;text-decoration:none;cursor:pointer;
+  border-radius:99px;padding:10px 20px;transition:.2s;border:1px solid var(--leaf);
+}
+.cta.solid{background:var(--leaf);color:#fff}
+.cta.solid:hover{background:var(--ink)}
+.cta.ghost{background:transparent;color:var(--leaf)}
+.cta.ghost:hover{background:var(--paper)}
+
+/* ---------- Section scaffolding ---------- */
+section{padding:64px 0}
+.sec-head{max-width:62ch}
+.sec-kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.sec-title{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(26px,4.4vw,42px);line-height:1.05;margin:8px 0 14px}
+.sec-lede{font-size:16px;color:var(--ink-soft);max-width:64ch}
+
+/* ---------- Calligraphy ink divider ---------- */
+.ink-band{background:var(--cream);padding:8px 0 16px}
+#collection{padding-bottom:34px}
+.ink-band img{display:block;width:100%;max-width:860px;height:auto;margin:0 auto;opacity:.85}
+@media(max-width:760px){.ink-band img{max-width:100%}}
+
+/* ---------- The Book ---------- */
+.book{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.book .readout{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--leaf);font-weight:600;margin-bottom:14px}
+.book-grid{display:grid;grid-template-columns:1fr;gap:34px;align-items:start}
+.book-grid.open{grid-template-columns:minmax(380px,560px) 1fr}
+.book-grid:not(.open) .marks{max-width:620px}     /* wide bookmark strip before any pick */
+.reading{display:none}                            /* right page stays hidden until a bookmark is opened */
+.book-grid.open .reading{display:block}
+@media(max-width:880px){.book-grid,.book-grid.open{grid-template-columns:1fr;gap:24px}}
+
+/* the row of vertical "bookmark" panels */
+.marks{
+  display:flex;gap:8px;height:clamp(440px,64vh,660px);
+  border-radius:8px;overflow:hidden;transition:gap .8s cubic-bezier(.4,0,.2,1);
+  box-shadow:var(--shadow);background:#e9e6dd;border:1px solid var(--line);
+}
+.marks.closed{gap:0}
+.mark{
+  flex:1;min-width:0;position:relative;cursor:pointer;border:none;padding:0;
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+  filter:grayscale(1) contrast(1.03) brightness(1.03) sepia(.10);
+  transition:filter .9s ease, transform .4s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+  transform-origin:bottom center;
+}
+
+/* ---- edge style A: painted / deckled (torn watercolor edge) ---- */
+/* the rough edge is a static SVG-turbulence alpha mask. No filter on the panel
+   itself, so the grayscale reveal and the hover/lift transform never shimmer. */
+.marks.edge-deckled{background:transparent;border:none;box-shadow:none;overflow:visible}
+.marks.edge-deckled .mark{
+  --deckle:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='600' preserveAspectRatio='none'%3E%3Cfilter id='d'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02 0.05' numOctaves='2' seed='8' result='n'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='n' scale='9' xChannelSelector='R' yChannelSelector='G'/%3E%3C/filter%3E%3Crect x='6' y='5' width='88' height='590' fill='%23fff' filter='url(%23d)'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+  -webkit-mask:var(--deckle);mask:var(--deckle);
+}
+
+/* ---- edge style B: postage stamp (scalloped perforations + white frame) ---- */
+.marks.edge-stamp{background:transparent;border:none;box-shadow:none;overflow:visible;gap:8px}
+.marks.edge-stamp .mark{
+  --hole:5px;--gap:13px;
+  box-shadow:inset 0 0 0 4px #fbfaf5;
+  -webkit-mask:
+    radial-gradient(var(--hole) at 50% 0,    #0000 97%,#000) 0 0    /var(--gap) 100% repeat-x,
+    radial-gradient(var(--hole) at 50% 100%, #0000 97%,#000) 0 100% /var(--gap) 100% repeat-x,
+    radial-gradient(var(--hole) at 0 50%,    #0000 97%,#000) 0 0    /100% var(--gap) repeat-y,
+    radial-gradient(var(--hole) at 100% 50%, #0000 97%,#000) 100% 0 /100% var(--gap) repeat-y;
+  -webkit-mask-composite:source-in,source-in,source-in;
+  mask:
+    radial-gradient(var(--hole) at 50% 0,    #0000 97%,#000) 0 0    /var(--gap) 100% repeat-x,
+    radial-gradient(var(--hole) at 50% 100%, #0000 97%,#000) 0 100% /var(--gap) 100% repeat-x,
+    radial-gradient(var(--hole) at 0 50%,    #0000 97%,#000) 0 0    /100% var(--gap) repeat-y,
+    radial-gradient(var(--hole) at 100% 50%, #0000 97%,#000) 100% 0 /100% var(--gap) repeat-y;
+  mask-composite:intersect;
+}
+.marks.edge-stamp .mark.active{box-shadow:inset 0 0 0 4px #fbfaf5, var(--shadow-lg)}
+.mark::after{
+  content:attr(data-n);position:absolute;left:50%;bottom:10px;transform:translateX(-50%);
+  width:24px;height:24px;border-radius:50%;background:rgba(251,250,245,.85);
+  color:var(--ink-soft);font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 1px 4px rgba(0,0,0,.15);transition:.3s;
+}
+.mark:hover{filter:grayscale(.4) contrast(1.05) brightness(1.05);transform:translateY(-6px)}
+.mark.lit{filter:none}
+.mark.lit::after{background:var(--leaf);color:#fff}
+.mark.active{transform:translateY(-10px);box-shadow:var(--shadow-lg);z-index:2}
+.mark.active::after{background:var(--earth);color:#fff}
+
+/* the reading page that flips */
+.reading{perspective:1500px;min-height:clamp(440px,64vh,660px)}
+.leaf{
+  background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);
+  padding:30px 32px;min-height:inherit;
+  transform-origin:left center;transition:transform .26s ease, opacity .26s ease;
+}
+.leaf.flip{transform:rotateY(-92deg);opacity:0}
+
+/* speaker reading card — flips between talk (front) and bio + citations (back) */
+.spk-card{position:relative;height:calc(clamp(440px,64vh,660px) - 60px);perspective:1600px}
+.spk-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.4,.05,.2,1)}
+.spk-card.flipped .spk-inner{transform:rotateY(180deg)}
+.spk-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column}
+.spk-back{transform:rotateY(180deg)}
+.prof-scroll{flex:1;min-height:0;overflow:auto;border-top:1px solid var(--line);padding-top:14px;margin-top:6px}
+.spk-face h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-bottom:5px}
+.spk-face h4 ~ h4{margin-top:18px}
+.prof-bio{font-size:14px;color:var(--ink-soft);line-height:1.6;margin-bottom:8px}
+.spk-front .org-links{justify-content:flex-start;margin-top:18px}
+.spk-flip{
+  align-self:flex-start;margin-top:16px;font:inherit;font-size:12.5px;font-weight:600;cursor:pointer;
+  border:1px solid var(--line);background:var(--paper);color:var(--leaf);border-radius:99px;padding:8px 16px;transition:.2s;
+}
+.spk-flip:hover{border-color:var(--leaf);background:#fff}
+.leaf .hint{font-family:"Fraunces",serif;font-style:italic;color:var(--ink-soft);font-size:16px}
+.leaf .hint b{color:var(--leaf);font-style:normal;font-weight:600}
+
+/* profile inside the page */
+.prof-top{display:flex;gap:18px;align-items:center;margin-bottom:18px}
+.avatar{
+  flex-shrink:0;width:92px;height:92px;border-radius:12px;overflow:hidden;
+  background:var(--cream);border:1px solid var(--line);position:relative;
+}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.avatar .ini{
+  position:absolute;inset:0;display:none;align-items:center;justify-content:center;
+  font-family:"Fraunces",serif;font-size:30px;font-weight:600;color:var(--leaf);background:var(--cream);
+}
+.prof-tag{display:inline-block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--earth);font-weight:600}
+.prof-name{font-family:"Fraunces",serif;font-size:24px;font-weight:600;line-height:1.1;margin:3px 0 2px}
+.prof-affil{font-size:13.5px;color:var(--ink-soft)}
+.prof-form{font-size:12.5px;color:var(--leaf);font-weight:600;margin-top:3px}
+.prof-block{border-top:1px solid var(--line);padding-top:14px;margin-top:6px}
+.prof-block h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-bottom:5px}
+.prof-q{font-family:"Fraunces",serif;font-style:italic;font-size:20px;line-height:1.25;color:var(--leaf);margin-bottom:16px}
+.prof-talk{font-family:"Fraunces",serif;font-size:18px;font-weight:600;line-height:1.25;color:var(--ink);margin-bottom:16px}
+.prof-cite{font-size:13px;color:var(--ink-soft);line-height:1.5;margin-bottom:10px}
+.prof-cite i{font-style:italic}
+.prof-cite.empty{font-style:italic;color:#9aa090}
+.prof-scholar{display:inline-block;margin-top:12px;font-size:12.5px;color:var(--leaf);font-weight:600;text-decoration:none;border-bottom:1px solid currentColor}
+
+/* finale page */
+.finale{text-align:center;display:flex;flex-direction:column;justify-content:center;height:100%;gap:14px;padding:20px}
+.finale h3{font-family:"Fraunces",serif;font-size:26px;font-weight:600;line-height:1.15}
+.finale p{color:var(--ink-soft);font-size:15px;max-width:46ch;margin:0 auto}
+
+.controls{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.btn{font:inherit;font-size:12.5px;font-weight:500;cursor:pointer;border:1px solid var(--line);background:var(--paper);color:var(--ink-soft);border-radius:99px;padding:8px 16px;transition:.2s}
+.btn:hover{border-color:var(--leaf);color:var(--leaf)}
+
+/* ---------- Mission ---------- */
+.mission-body{max-width:74ch;margin-top:18px}
+.mission-body p{font-size:16px;color:var(--ink-soft);margin-bottom:14px}
+
+/* ---------- Organizers ---------- */
+.org-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:32px}
+@media(max-width:760px){.org-grid{grid-template-columns:1fr}}
+
+/* flip card — identity on the front, bio + citations on the back */
+.org{background:transparent;border:none;padding:0;perspective:1500px;min-height:430px;cursor:pointer}
+.org-inner{position:relative;width:100%;height:430px;transition:transform .7s cubic-bezier(.4,.05,.2,1);transform-style:preserve-3d}
+.org.flipped .org-inner{transform:rotateY(180deg)}
+.org-face{
+  position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  border:1px solid var(--line);border-radius:12px;padding:26px 24px;
+  display:flex;flex-direction:column;overflow:auto;
+  /* faint growth-form photo (bamboo / palm / liana) under a paper wash */
+  background-color:var(--paper);
+  background-image:linear-gradient(rgba(251,250,245,.5),rgba(251,250,245,.7)), var(--bg,none);
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+}
+.org-front{text-align:center;align-items:center}
+.org-back{
+  transform:rotateY(180deg);text-align:left;
+  /* a touch more wash on the back so the bio stays easy to read */
+  background-image:linear-gradient(rgba(251,250,245,.72),rgba(251,250,245,.84)), var(--bg,none);
+}
+.org .avatar{width:104px;height:104px;border-radius:50%;margin:0 auto 14px}
+.org .avatar .ini{border-radius:50%}
+.org .role{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);font-weight:700;text-shadow:var(--halo)}
+.org h3{font-family:"Fraunces",serif;font-size:21px;font-weight:600;margin:5px 0 2px;text-shadow:var(--halo)}
+.org .org-affil{font-size:12.5px;color:var(--navy);font-weight:600;margin-bottom:2px;text-shadow:var(--halo)}
+.org .org-school{font-size:12.5px;color:var(--navy);font-weight:700;margin-bottom:14px;text-shadow:var(--halo)}
+/* profile links as icon chips, legible over the photo */
+.org-links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:4px}
+.org-links a{
+  width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:rgba(251,250,245,.9);border:1px solid var(--line);color:var(--ic,var(--navy));
+  box-shadow:0 1px 4px rgba(35,48,31,.14);
+  transition:transform .15s ease, background .2s, box-shadow .2s;
+}
+.org-links a:hover{transform:translateY(-2px);background:#fff;box-shadow:0 5px 14px rgba(35,48,31,.2)}
+.org-links svg{width:19px;height:19px;fill:currentColor;display:block}
+.org-back h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-bottom:6px}
+.org-back .cite-h{border-top:1px solid var(--line);padding-top:12px;margin-top:2px}
+.org-back p{font-size:13px;color:var(--ink-soft);margin-bottom:12px;line-height:1.5}
+.org-back .cite{font-size:11.5px;color:#7e8674;line-height:1.45;margin-bottom:9px}
+.flip-hint{margin-top:auto;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);font-weight:700;padding-top:14px;text-shadow:var(--halo)}
+
+/* ---------- Calls (collection + join) ---------- */
+.calls{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+@media(max-width:760px){.calls{grid-template-columns:1fr}}
+.call{
+  border:1px solid var(--line);border-radius:14px;padding:34px;background:var(--paper);
+  position:relative;overflow:hidden;
+}
+.call.feature{background:linear-gradient(135deg,#fbfaf5,#eef2e6)}
+.call .pill{display:inline-block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#fff;background:var(--earth);border-radius:99px;padding:3px 11px;margin-bottom:14px}
+.call.feature .pill{background:var(--leaf)}
+.call h3{font-family:"Fraunces",serif;font-size:24px;font-weight:600;line-height:1.15;margin-bottom:10px}
+.call p{font-size:14.5px;color:var(--ink-soft);margin-bottom:18px}
+.call .stub{font-size:12.5px;color:#9aa090;font-style:italic}
+
+/* ---------- Footer ---------- */
+footer.site{border-top:1px solid var(--line);padding:36px 0 64px;font-size:12.5px;color:var(--ink-soft);background:var(--paper)}
+footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-between;align-items:center}
+footer .row a{color:var(--leaf);font-weight:600;text-decoration:none}
+.note{margin-top:24px;font-size:11.5px;color:#9aa090;max-width:74ch}
+</style>
 </head>
 <body>
-  <main class="card">
-    <p class="eyebrow">ATBC 2026 &middot; Symposium S-18</p>
-    <h1>Beyond <em>Trees</em></h1>
-    <p class="tagline">A more inclusive growth-form perspective on ecology and society in tropical landscapes.</p>
-    <p class="placeholder"><span class="pulse"></span>This is about to be a great website.</p>
-    <p class="meta">
-      Lianas &middot; Palms &amp; Rattans &middot; Bamboos &middot; Epiphytes<br />
-      Association for Tropical Biology and Conservation &middot; June 2026
-    </p>
-  </main>
+
+<!-- ===== NAV ===== -->
+<nav class="top"><div class="wrap">
+  <a class="brand" href="#top">
+    <img src="arts/website-icon-ink.png" alt="Beyond Trees mark">
+    <span class="nm">Beyond Trees</span>
+  </a>
+  <div class="links">
+    <a href="#mission">Mission</a>
+    <a href="#speakers">Speakers</a>
+    <a href="#organizers">Team</a>
+    <a href="#collection">Special Collection</a>
+    <a href="#join">Join</a>
+    <a class="ext" href="http://47.83.172.178:8080/#/session/S-18" target="_blank" rel="noopener">ATBC 2026 ↗</a>
+  </div>
+</div></nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero" id="top"><div class="wrap">
+  <img class="logo" src="arts/website-icon-ink.png" alt="Beyond Trees ink-brush wreath of tropical growth forms">
+  <div class="eyebrow">A growth-form research community</div>
+  <h1 class="title">Beyond <em>Trees</em></h1>
+  <p class="tagline">Forest ecology has long centered on trees. Beyond Trees explores the diversity of growth forms that climb, sprawl, twine, and hang, and the vital roles they play in forests as ecological and socioeconomic systems.</p>
+  <div class="hero-cta">
+    <a class="cta solid" href="#mission">See the forest</a>
+  </div>
+</div></header>
+
+<!-- ===== MISSION ===== -->
+<section class="mission" id="mission"><div class="wrap">
+  <div class="sec-head">
+    <div class="sec-kicker">Our mission</div>
+    <h2 class="sec-title">Seeing beyond the trees</h2>
+    <p class="sec-lede">Forests are not made of trees alone.</p>
+  </div>
+
+  <div class="mission-body">
+    <p>Palms, bamboos, bananas, lianas, climbers, and epiphytes shape tropical ecosystems alongside trees, yet they remain underrepresented in ecological research and conservation discourse.</p>
+    <p>These growth forms reveal alternative solutions to the woody tree strategy for some of the most fundamental challenges of life on land: reaching the canopy, persisting through time, competing for light, and surviving disturbance. Their evolutionary pathways differ dramatically from those of woody trees, but their ecological importance is no less profound.</p>
+    <p>Beyond Trees is a research community dedicated to understanding, celebrating, and fostering research on the diverse growth forms that make forests possible. By broadening our perspective beyond trees, we hope to build a more inclusive understanding of forest ecology, biodiversity, and sustainability.</p>
+  </div>
+</div></section>
+
+<!-- ===== THE BOOK / SPEAKERS ===== -->
+<section class="book" id="speakers"><div class="wrap">
+  <div class="sec-head" style="margin-bottom:26px">
+    <div class="sec-kicker">Six questions, one forest</div>
+    <h2 class="sec-title">The book of beyond-tree forms</h2>
+    <p class="sec-lede">Choose a bookmark and discover a different side of the forest.</p>
+  </div>
+
+  <div class="readout" id="readout">0 of 6 questions opened — choose a bookmark</div>
+  <div class="book-grid">
+    <div class="marks edge-deckled" id="marks"></div>
+    <div class="reading">
+      <div class="leaf" id="leaf">
+        <p class="hint">Pick a <b>bookmark</b> to the left. Each one opens the speaker who explores that question, with their talk and a key paper.</p>
+      </div>
+    </div>
+  </div>
+  <div class="controls">
+    <button class="btn" id="resetAll">Start again</button>
+  </div>
+</div></section>
+
+<!-- ===== ORGANIZERS ===== -->
+<section id="organizers" style="background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">
+  <div class="sec-head">
+    <div class="sec-kicker">The team</div>
+    <h2 class="sec-title">Organizing team</h2>
+    <p class="sec-lede">Beyond Trees began as a symposium, but its vision extends beyond a single session. We hope to foster a community exploring the diversity, function, and significance of plant growth forms.</p>
+  </div>
+  <div class="org-grid" id="orgGrid"></div>
+</div></section>
+
+<!-- ===== CALLS: COLLECTION + JOIN ===== -->
+<section id="collection"><div class="wrap">
+  <div class="sec-head">
+    <div class="sec-kicker">What's next</div>
+    <h2 class="sec-title">Grow the perspective with us</h2>
+  </div>
+  <div class="calls">
+    <div class="call feature" id="collection-card">
+      <span class="pill">Special collection · coming soon</span>
+      <h3>Call for papers: beyond-tree growth forms</h3>
+      <p>We are assembling a special collection that gathers evolutionary, functional, and socio-ecological work on lianas, palms and rattans, bamboos, and epiphytes under one perspective.</p>
+      <p class="stub">Journal: <i>Biotropica</i>. More details coming soon.</p>
+    </div>
+    <div class="call" id="join">
+      <span class="pill">Open call</span>
+      <h3>Get involved</h3>
+      <p>Beyond Trees is building a community of researchers interested in non-tree growth forms across tropical and subtropical ecosystems.</p>
+      <p>Whether your work focuses on evolution, ecology, conservation, remote sensing, urban systems, or human livelihoods, we welcome new connections and collaborations.</p>
+      <p class="stub">Sign-up form coming soon.</p>
+      <a class="cta solid" href="mailto:az3506@nyu.edu?subject=Beyond%20Trees%20research%20network" style="display:inline-block">Express interest →</a>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== CALLIGRAPHY INK CODA ===== -->
+<div class="ink-band"><div class="wrap">
+  <img src="arts/caligraphy-trim.png" alt="Ink-brush studies of bamboo culms, a climbing stem, and grasses">
+</div></div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site"><div class="wrap">
+  <div class="row">
+    <span><b>Beyond Trees</b> · a growth-form research community</span>
+    <span>Symposium <a href="http://47.83.172.178:8080/#/session/S-18" target="_blank" rel="noopener">S-18 at ATBC 2026 ↗</a></span>
+  </div>
+</div></footer>
+
+<script>
+/* =========================================================
+   Speakers — one per bookmark panel, left to right.
+   panel: 0-5 = which bookmark image, arts/panels/panel1..6.png (cropped to the real artwork edges).
+   photo: file in arts/people/ ; falls back to initials if missing.
+   No abstracts by design — talk title + one key citation only.
+   ========================================================= */
+const SPEAKERS = [
+  { id:"yifan", n:1, panel:0, q:"Where do they come from?", persp:"Evolutionary", form:"Climbing plants / lianas",
+    name:"Yifan Wang", affil:"New York University · Onyenedum Lab", photo:"yifan.jpg",
+    talk:"Liana diversification: rapid evolutionary radiation in <i>Aristolochia</i> subg. <i>Siphisia</i>",
+    bio:"A plant evolutionary biologist studying the microevolution of flowering plants, especially <i>Aristolochia</i> (the pipevine), and the transcriptomics and kinematics of the common bean, <i>Phaseolus vulgaris</i>. He is passionate about making plant science accessible through technology, art, and storytelling, and runs a small studio creating plant-themed scientific artwork.",
+    cites:[
+      "<b>Wang, Y.F.</b>, Liao, S., Guo, Z.R., Li, P., Huang, Y.S., Onyenedum, J.G. (2025). Phylogenomics of <i>Aristolochia</i> subg. <i>Siphisia</i> (Aristolochiaceae). Preprint, bioRxiv.",
+      "Guo, Z.R., <b>Wang, Y.F.</b>, Onyenedum, J.G., Li, J. (2025). <i>Aristolochia geantha</i>, a new species from Yunnan, China. <i>Taiwania</i> 70: 293–300."
+    ],
+    links:[ {type:"website", url:"https://yifanbotany.com/about/"} ] },
+
+  { id:"li", n:2, panel:1, q:"What mechanisms drive their diversification?", persp:"Evolutionary", form:"Understory bamboos",
+    name:"Li Wang", affil:"Xishuangbanna Tropical Botanical Garden, CAS", photo:"LiWang.jpg",
+    talk:"Temperate woody bamboos in pantropical forests: an overlooked understory",
+    bio:"Senior engineer at Xishuangbanna Tropical Botanical Garden, CAS. His work spans paleobotany, paleoclimatology, and plant taxonomy, focusing on Cenozoic fossil floras of southwest China and Southeast Asia, the morphology and taxonomy of fossil and modern bamboos, and the evolution of <i>Metasequoia</i>.",
+    cites:[
+      "<b>Wang, L.</b>, Jacques, F.M.B., Su, T., Xing, Y.W., Zhang, S.T., Zhou, Z.K. (2013). The earliest fossil bamboos of China (middle Miocene, Yunnan). <i>Review of Palaeobotany and Palynology</i> 197: 253–265.",
+      "<b>Wang, L.</b>, Kunzmann, L., Su, T., et al. (2019). The disappearance of <i>Metasequoia</i> after the middle Miocene in Yunnan, southwest China. <i>Review of Palaeobotany and Palynology</i> 264: 64–74."
+    ],
+    links:[ {type:"email", url:"mailto:wangli@xtbg.org.cn"}, {type:"website", url:"https://xtbg.cas.cn/2022/rcdw/gcs/202210/t20221020_6536230.html"} ] },
+
+  { id:"renyi", n:3, panel:2, q:"Why are they so successful in forests of trees?", persp:"Functional", form:"Palms",
+    name:"Ren-Yi Ma", affil:"Yunnan Academy of Forestry and Grassland<br>Curator &amp; Technical Advisor, Palm Garden (Palm Greenhouse), Kunming Arboretum, Yunnan Province, China", photo:"renyi.jpg",
+    talk:"Mechanisms of ecological dominance in palms: leaf economics, nutrient use, and mechanical defense",
+    bio:"Plant ecophysiologist whose research focuses on leaf functional traits, nutrient stoichiometry, hydraulic structure, and water-use strategies to clarify how different plant groups adapt to environmental stresses such as drought and nutrient-poor habitats, with an emphasis on palms (Arecaceae).",
+    cites:[
+      "<b>Ma, R.Y.</b>, Zhang, J.L., Cavaleri, M.A., Sterck, F., Strijk, J.S., Cao, K.F. (2015). Convergent evolution towards high net carbon-gain efficiency contributes to the shade tolerance of palms (Arecaceae). <i>PLOS ONE</i> 10(10): e0140384.",
+      "Mo, Y.X., Corlett, R.T., Wang, G., Song, L., Lu, H.Z., Wu, Y., Hao, G.Y., <b>Ma, R.Y.</b>, Men, S.Z., Li, Y., Liu, W.Y. (2022). Hemiepiphytic figs kill their host trees: acquiring phosphorus is a driving factor. <i>New Phytologist</i> 236: 714–728."
+    ],
+    links:[ {type:"email", url:"mailto:marenyi@yafg.ac.cn"}, {type:"orcid", url:"https://orcid.org/0000-0002-2218-7043"} ] },
+
+  { id:"dossa", n:4, panel:3, q:"How do they shape ecosystem processes in natural systems?", persp:"Functional", form:"Lianas — afterlives",
+    name:"Gbadamassi G. O. Dossa", affil:"Xishuangbanna Tropical Botanical Garden, CAS", photo:"Dossa.jpg",
+    talk:"Afterlives of lianas: what have we learned so far?",
+    bio:"Originally from Benin (West Africa), he is Professor in Ecology at Xishuangbanna Tropical Botanical Garden, CAS. He holds a BSc in Agronomy and an engineering degree in Forestry and Management of Natural Resources from the University of Parakou (Benin), an MSc in Ecology from Northeast Agricultural University (China), and a PhD (2016) from the University of Chinese Academy of Sciences. His research seeks to mechanistically predict the fate of organic matter, whether from leaf, wood, or roots, using unconventional methods such as CO₂ efflux measurements of decomposition rates, and integrating the neglected role of bark in wood decomposition together with the contribution of fungi, termites, and other arthropods in tropical environments. He aims to extend and test the hypothesis of afterlife effects of plant traits, asking how the traits of one organ (e.g., wood) can be influenced by those of another, unrelated organ (e.g., bark).",
+    cites:[
+      "Njoroge, D.M., Munyaneza, A., Zuo, J., <b>Dossa, G.G.O.</b>, et al. (2026). A double-edged sword? Liana wood decomposes faster than tree wood. <i>Proceedings of the Royal Society B</i> 293(2068): 20252799.",
+      "Njoroge, D.M., Zhu, Y., Codjia, J.E.I., Zuo, J., <b>Dossa, G.G.O.</b>, et al. (2026). Interactive effects of litter diversity, functional traits, and macrofauna on decomposition of litter mixtures from lianas and trees. <i>Soil Biology and Biochemistry</i> 220: 110163.",
+      "<b>Dossa, G.G.</b>, Li, H.L., Pan, B., et al. (2024). Effects of lianas on forest biogeochemistry during their lives and afterlives. <i>Global Change Biology</i> 30(4): e17274.",
+      "<b>Dossa, G.G.</b>, Adhikari, S., Cao, K.F., et al. (2024). Lianas from lives to afterlives. <i>New Phytologist</i>."
+    ],
+    links:[ {type:"email", url:"mailto:dossa@xtbg.org.cn"}, {type:"website", url:"https://dossag.github.io/"} ] },
+
+  { id:"maria", n:5, panel:4, q:"How do they function in urban ecosystems?", persp:"Socio-ecological", form:"Epiphytes",
+    name:"Maria J. Carmona-Higuita", affil:"PhD Candidate, Philipps-Universität Marburg, Germany", photo:"Maria.png",
+    talk:"Beyond ornamentals: ecosystem services provided by epiphytes in a tropical city",
+    bio:"A biogeographer and conservation scientist interested in the large-scale distribution, diversity, and conservation of vascular epiphytes. Her research combines biodiversity databases, species distribution modelling, macroecology, and conservation planning to investigate the drivers of epiphyte diversity across the Neotropics and how global change may affect future biodiversity patterns. She is active in the Epiphyte Inventory Group (EpIG), an international network mobilizing and synthesizing data on vascular epiphytes worldwide.",
+    cites:[
+      "<b>Carmona-Higuita, M.J.</b>, et al. (2026). Integrating magnetic and elemental analyses to evaluate epiphytes as biomonitors of urban air pollution (Medellín, Colombia). <i>Environmental Monitoring and Assessment</i>.",
+      "<b>Carmona-Higuita, M.J.</b>, et al. (2025). Endemism centres of the five richest vascular epiphyte families in the Neotropics. <i>Journal of Biogeography</i> 52: 80–91."
+    ],
+    links:[
+      {type:"website", url:"https://www.uni-marburg.de/en/fb17/disciplines/biodiversity-of-plants/ag-zizka/team-1/msc-mj-carmona"},
+      {type:"linkedin", url:"https://www.linkedin.com/in/maria-judith-carmona-higuita-576b6235"},
+      {type:"researchgate", url:"https://www.researchgate.net/profile/Maria-Carmona-Higuita-2"}
+    ] },
+
+  { id:"kangning", n:6, panel:5, q:"How can they reshape urban green futures?", persp:"Socio-ecological", form:"Climbing plants — urban",
+    name:"Kangning (Ken) Huang", affil:"NYU Shanghai", photo:"Kangning.jpg",
+    talk:"Urban climbing plants as climate-adaptation infrastructure: a global meta-analysis of cooling performance",
+    bio:"Assistant Professor of Environmental Studies at NYU Shanghai. He earned his PhD from Yale University, School of the Environment (2020), and was an Advanced Study Program Postdoctoral Fellow at NCAR. His research asks how urbanization affects climate change, developing global urbanization scenarios to explore possible urban climate futures and the interventions needed to reach more sustainable ones.",
+    cites:[
+      "<b>Huang, K.</b>, Guan, C., Stone, B., Liang, J. (2025). Declining urban density attenuates rising population exposure to surface heat extremes. <i>Scientific Reports</i> 15(1): 13860.",
+      "<b>Huang, K.</b>, Li, X., Liu, X., Seto, K.C. (2019). Projecting global urban land expansion and heat-island intensification through 2050. <i>Environmental Research Letters</i> 14(11): 114037."
+    ],
+    links:[ {type:"email", url:"mailto:kh3657@nyu.edu"}, {type:"website", url:"https://knhuang.weebly.com"} ] }
+];
+
+const ORGS = [
+  { name:"Aiyu Zheng", role:"Lead organizer", affil:"Postdoctoral Associate, Environmental Studies", school:"New York University", photo:"Aiyu.jpg", bg:"bamboo.jpg",
+    bio:"A forest ecologist exploring the multi-scale consequences of plant life histories, growth, and reproductive strategies through mathematical models and fieldwork. Her work centers on grassy trees, large canopy monocots such as bamboo, palms, and bananas that pair grass-like rapid growth with tree-like canopy persistence, and on promoting them as nature-based solutions. She also studies the dynamics of urban concrete forests.",
+    cites:[
+      "<b>Zheng, A.</b> &amp; Lu, M. (2025). Grassy trees: the neglected hybrids for sustainability. <i>Trends in Ecology &amp; Evolution</i>.",
+      "<b>Zheng, A.</b> &amp; Pacala, S.W. (2024). The enigmatic life history of bamboo explained as a strategy to arrest succession. <i>Ecological Monographs</i> 94(4): e1621."
+    ],
+    links:[
+      {type:"orcid",   url:"https://orcid.org/0000-0002-1162-6944"},
+      {type:"scholar", url:"https://scholar.google.com/citations?hl=en&user=iEDBMGUAAAAJ"},
+      {type:"website", url:"https://aiyuzheng.com/"},
+      {type:"email",   url:"mailto:az3506@nyu.edu"}
+    ] },
+  { name:"Mingzhen Lu", role:"Co-organizer", affil:"Assistant Professor, Environmental Studies", school:"New York University", photo:"mingzhen.jpg", bg:"palm.jpg",
+    bio:"An ecologist and complexity scientist seeking the simple rules behind the complex dynamics of terrestrial ecosystems and their coupled urban systems. His work spans plant roots and global biogeochemistry, plant-microbial symbioses, ecological regime shifts, and a system-based theory bridging ecosystem ecology and urban science. Former Omidyar Complexity Fellow at the Santa Fe Institute (2020–2023).",
+    cites:[
+      "<b>Lu, M.</b>, Wang, S., Malhotra, A., et al. (2025). A continental-scale analysis reveals widespread root bimodality. <i>Nature Communications</i> 16: 5281.",
+      "<b>Lu, M.</b> &amp; Hedin, L.O. (2019). Global plant-symbiont organization and the emergence of biogeochemical cycles resolved by evolution-based trait modelling. <i>Nature Ecology &amp; Evolution</i> 3(2): 239–250."
+    ],
+    links:[
+      {type:"orcid",   url:"https://orcid.org/0000-0002-8707-8745"},
+      {type:"scholar", url:"https://scholar.google.com/citations?user=YMh8t6IAAAAJ"},
+      {type:"website", url:"https://www.mingzhenlu-lab.com/"},
+      {type:"email",   url:"mailto:ml9120@nyu.edu"}
+    ] },
+  { name:"Hannes De Deurwaerder", role:"Co-organizer", affil:"Assistant Professor of Global Change Ecology", school:"Virginia Tech", photo:"hannes.jpg", bg:"liana.jpg",
+    bio:"A quantitative plant ecophysiologist studying how forest dynamics and composition respond to environmental and human disturbance. He is especially interested in lianas, a growth form that challenges tree-centric theory, and integrates ecological theory and vegetation modelling with field observation to predict how forest communities and ecosystem processes respond to environmental change.",
+    cites:[
+      "Schnitzer, S.A., Kaçamak, B., Zombo, I., et al. &amp; <b>De Deurwaerder, H.P.T.</b> (2025). The search for champion lianas: the largest lianas on six continents. <i>Biotropica</i> 57: 4–11.",
+      "<b>De Deurwaerder, H.P.T.</b>, Detto, M., Visser, M.D., Schnitzer, S. &amp; Pacala, S.W. (2024). Linking physiology, epidemiology, and demography: understanding how lianas outcompete trees in a changing world. <i>PNAS</i> 120."
+    ],
+    links:[
+      {type:"orcid",   url:"https://orcid.org/0000-0002-9287-2062"},
+      {type:"scholar", url:"https://scholar.google.com/citations?hl=en&user=ocH3_iMAAAAJ"},
+      {type:"website", url:"https://hannesdedeurwaerder.wixsite.com/hannesdedeurwaerder"},
+      {type:"email",   url:"mailto:hannesd@vt.edu"}
+    ] }
+];
+
+/* social / profile icons — inline SVG so the page stays self-contained */
+const ICONS={
+  orcid:{c:"#A6CE39", d:"M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947 0 .525-.422.947-.947.947-.525 0-.946-.422-.946-.947 0-.516.421-.947.946-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c2.359 0 3.588-1.444 3.588-3.722 0-2.016-1.091-3.722-3.722-3.722h-2.163z"},
+  scholar:{c:"#4285F4", d:"M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"},
+  website:{c:"#16365c", d:"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"},
+  email:{c:"#16365c", d:"M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"},
+  linkedin:{c:"#0A66C2", d:"M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"}
+};
+const LINK_LABEL={orcid:"ORCID",scholar:"Google Scholar",website:"Website",email:"Email",linkedin:"LinkedIn",researchgate:"ResearchGate"};
+function linksHTML(links){
+  if(!links||!links.length) return "";
+  return `<div class="org-links">`+links.map(l=>{
+    const ic=ICONS[l.type]; if(!ic) return "";
+    const lbl=LINK_LABEL[l.type]||l.type;
+    return `<a class="org-link" href="${l.url}" target="_blank" rel="noopener" title="${lbl}" aria-label="${lbl}" style="--ic:${ic.c}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${ic.d}"/></svg></a>`;
+  }).join("")+`</div>`;
+}
+
+/* ---------- helpers ---------- */
+const $ = id => document.getElementById(id);
+const initials = name => name.split(/[\s·]+/).filter(Boolean).slice(0,2).map(w=>w[0]).join("").toUpperCase();
+function avatarHTML(photo, name, cls){
+  return `<div class="avatar ${cls||""}">
+      <img src="arts/people/${photo}" alt="${name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <span class="ini">${initials(name)}</span>
+    </div>`;
+}
+
+/* ---------- build bookmarks ---------- */
+const marks = $("marks");
+SPEAKERS.forEach(s=>{
+  const b=document.createElement("button");
+  b.className="mark";b.dataset.id=s.id;b.dataset.n=s.n;
+  // each bookmark is its own panel image, cropped to the real artwork boundaries
+  b.style.backgroundImage = `url("arts/panels/panel${s.panel+1}.png")`;
+  b.setAttribute("aria-label", `Open ${s.name}`);
+  b.addEventListener("click",()=>selectSpeaker(s.id));
+  marks.appendChild(b);
+});
+
+const lit = new Set();
+let activeId = null;
+const bookGrid = document.querySelector(".book-grid");
+
+// flip the speaker card between talk (front) and bio + citations (back)
+$("leaf").addEventListener("click", e=>{
+  if(e.target.closest(".spk-flip")){
+    const card = $("leaf").querySelector(".spk-card");
+    if(card) card.classList.toggle("flipped");
+  }
+});
+
+function profileHTML(s){
+  const cites = (s.cites||[]).map(c=>`<p class="prof-cite">${c}</p>`).join("");
+  return `
+    <div class="spk-card">
+      <div class="spk-inner">
+        <div class="spk-face spk-front">
+          <div class="prof-top">
+            ${avatarHTML(s.photo, s.name)}
+            <div>
+              <span class="prof-tag">${s.persp}</span>
+              <div class="prof-name">${s.name}</div>
+              <div class="prof-affil">${s.affil}</div>
+              <div class="prof-form">${s.form}</div>
+            </div>
+          </div>
+          <div class="prof-scroll">
+            ${s.q ? `<h4>The question</h4><div class="prof-q">${s.q}</div>` : ``}
+            <h4>Talk</h4>
+            <div class="prof-talk">${s.talk}</div>
+            ${linksHTML(s.links)}
+          </div>
+          <button class="spk-flip">Read bio &amp; citations →</button>
+        </div>
+        <div class="spk-face spk-back">
+          <div class="prof-scroll">
+            <h4>Bio</h4>
+            <p class="prof-bio">${s.bio || "Bio coming soon."}</p>
+            <h4>Key citation${(s.cites && s.cites.length>1) ? "s" : ""}</h4>
+            ${cites || `<p class="prof-cite empty">Key citation to be added.</p>`}
+          </div>
+          <button class="spk-flip">← Back to talk</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function flipTo(html){
+  const leaf=$("leaf");
+  leaf.classList.add("flip");
+  setTimeout(()=>{ leaf.innerHTML=html; leaf.classList.remove("flip"); }, 240);
+}
+
+function updateReadout(){
+  const n=lit.size;
+  $("readout").textContent = n===0 ? "0 of 6 questions opened — choose a bookmark"
+    : n<6 ? `${n} of 6 questions opened` : "6 of 6 — the whole forest";
+}
+
+function selectSpeaker(id){
+  const s=SPEAKERS.find(x=>x.id===id);
+  const wasComplete = lit.size===6;          // already had all six open?
+  bookGrid.classList.add("open");            // reveal the reading page beside the strip
+  marks.classList.remove("closed");          // re-open the book so you can browse again
+  document.querySelectorAll(".mark").forEach(m=>m.classList.toggle("active", m.dataset.id===id));
+  document.querySelector(`.mark[data-id="${id}"]`).classList.add("lit");
+  activeId=id;
+  lit.add(id);
+  updateReadout();
+  flipTo(profileHTML(s));
+  // auto-close to the finale only on the click that completes the set,
+  // never on later re-visits (that was the bounce-back bug).
+  if(lit.size===6 && !wasComplete) setTimeout(closeBook, 700);
+}
+
+function closeBook(){
+  marks.classList.add("closed");
+  document.querySelectorAll(".mark").forEach(m=>{m.classList.remove("active");});
+  flipTo(`<div class="finale">
+      <div class="sec-kicker">More to come</div>
+      <h3>See the whole forest</h3>
+      <p>These six talks are only the beginning. Beyond Trees is growing into a broader community of researchers exploring the diversity of forest growth forms. Learn more about the symposium and how to get involved.</p>
+      <a class="cta solid" href="http://47.83.172.178:8080/#/session/S-18" target="_blank" rel="noopener" style="align-self:center">Visit the Symposium Website ↗</a>
+    </div>`);
+}
+
+$("resetAll").addEventListener("click",()=>{
+  lit.clear();activeId=null;
+  bookGrid.classList.remove("open");         // hide the reading page, back to the wide strip
+  marks.classList.remove("closed");
+  document.querySelectorAll(".mark").forEach(m=>m.classList.remove("lit","active"));
+  updateReadout();
+  flipTo(`<p class="hint">Pick a <b>bookmark</b> to the left. Each one opens the speaker who explores that question, with their talk and a key paper.</p>`);
+});
+
+/* ---------- build organizers ---------- */
+const orgGrid=$("orgGrid");
+ORGS.forEach(o=>{
+  const d=document.createElement("div");
+  d.className="org";
+  if(o.bg) d.style.setProperty("--bg", `url("arts/bg/${o.bg}")`);
+  d.innerHTML=`
+    <div class="org-inner">
+      <div class="org-face org-front">
+        ${avatarHTML(o.photo, o.name)}
+        <div class="role">${o.role}</div>
+        <h3>${o.name}</h3>
+        <div class="org-affil">${o.affil}</div>
+        <div class="org-school">${o.school}</div>
+        ${linksHTML(o.links)}
+        <span class="flip-hint">Tap for bio →</span>
+      </div>
+      <div class="org-face org-back">
+        <h4>Bio</h4>
+        <p>${o.bio}</p>
+        <h4 class="cite-h">Key citations</h4>
+        ${(o.cites||[]).map(c=>`<p class="cite">${c}</p>`).join("")}
+        <span class="flip-hint">← Back</span>
+      </div>
+    </div>`;
+  // click the card to flip; the profile links still work without flipping
+  d.addEventListener("click",()=>d.classList.toggle("flipped"));
+  d.querySelectorAll(".org-front a").forEach(a=>a.addEventListener("click",e=>e.stopPropagation()));
+  orgGrid.appendChild(d);
+});
+
+updateReadout();
+</script>
 </body>
 </html>
